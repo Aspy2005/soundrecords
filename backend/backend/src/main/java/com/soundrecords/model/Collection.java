@@ -1,11 +1,10 @@
 package com.soundrecords.model;
 
-import io.hypersistence.utils.hibernate.type.array.ListArrayType;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Type;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -30,11 +29,42 @@ public class Collection {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @Type(ListArrayType.class)
-    @Column(
-        name = "spotify_album_ids",
-        columnDefinition = "text[]"
-    )
+    // Guardamos los IDs como texto separado por comas en PostgreSQL
+    // Ej: "id1,id2,id3"
+    @Column(name = "spotify_album_ids", columnDefinition = "TEXT")
     @Builder.Default
-    private List<String> spotifyAlbumIds = new ArrayList<>();
+    private String spotifyAlbumIds = "";
+
+    // Convierte el String a Lista cuando el frontend lo necesita
+    public List<String> getSpotifyAlbumIdsList() {
+        if (spotifyAlbumIds == null || spotifyAlbumIds.isBlank()) {
+            return new ArrayList<>();
+        }
+        return new ArrayList<>(Arrays.asList(spotifyAlbumIds.split(",")));
+    }
+
+    // Convierte la Lista a String para guardar en BD
+    public void setSpotifyAlbumIdsList(List<String> ids) {
+        if (ids == null || ids.isEmpty()) {
+            this.spotifyAlbumIds = "";
+        } else {
+            this.spotifyAlbumIds = String.join(",", ids);
+        }
+    }
+
+    // Agrega un ID a la lista
+    public void addAlbumId(String spotifyAlbumId) {
+        List<String> ids = getSpotifyAlbumIdsList();
+        if (!ids.contains(spotifyAlbumId)) {
+            ids.add(spotifyAlbumId);
+            setSpotifyAlbumIdsList(ids);
+        }
+    }
+
+    // Quita un ID de la lista
+    public void removeAlbumId(String spotifyAlbumId) {
+        List<String> ids = getSpotifyAlbumIdsList();
+        ids.remove(spotifyAlbumId);
+        setSpotifyAlbumIdsList(ids);
+    }
 }
