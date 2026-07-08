@@ -1,1 +1,64 @@
-<p>register works!</p>
+<div class="app-auth">
+  <div class="auth-box">
+
+    <div class="auth-logo">
+      <div class="auth-logo-mark"></div>
+      <div class="auth-logo-text">SOUND<span>RECORDS</span></div>
+    </div>
+
+    <div class="auth-title">Únete a SoundRecords</div>
+    <div class="auth-sub">La comunidad musical latinoamericana te espera</div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmitRegister()">
+      <div class="field" [class.invalid]="registerUsername?.invalid && registerUsername?.touched">
+        <label for="register-username">Nombre de usuario</label>
+        <input id="register-username" type="text" placeholder="@tu_nombre" formControlName="username" />
+        <div class="hint error" *ngIf="registerUsername?.invalid && registerUsername?.touched">
+          Mínimo 3 caracteres
+        </div>
+      </div>
+
+      <div class="field" [class.invalid]="registerEmail?.invalid && registerEmail?.touched">
+        <label for="register-email">Correo electrónico</label>
+        <input id="register-email" type="email" placeholder="tu@correo.com" formControlName="email" />
+        <div class="hint error" *ngIf="registerEmail?.invalid && registerEmail?.touched">
+          Ingresa un correo electrónico válido
+        </div>
+      </div>
+
+      <div class="field" [class.invalid]="registerPassword?.invalid && registerPassword?.touched">
+        <label for="register-password">Contraseña</label>
+        <input id="register-password" type="password" placeholder="Mín. 8 caracteres" formControlName="password" />
+        <div class="hint error" *ngIf="registerPassword?.invalid && registerPassword?.touched">
+          Debe contener letras y números, mínimo 8 caracteres
+        </div>
+        <div class="hint" *ngIf="registerPassword?.valid || !registerPassword?.touched">
+          Debe contener letras y números
+        </div>
+      </div>
+
+      <div class="hint error general-error" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <button type="submit" class="btn-primary btn-block" [disabled]="loading">
+        {{ loading ? 'Creando cuenta...' : 'Crear cuenta' }}
+      </button>
+    </form>
+
+    <div class="auth-divider"><span>o</span></div>
+
+    <button type="button" class="spotify-btn" (click)="registerWithSpotify()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 0C5.37 0 0 5.373 0 12s5.37 12 12 12 12-5.373 12-12S18.63 0 12 0zm5.44 17.32c-.213.34-.665.45-1.005.237-2.75-1.682-6.213-2.06-10.29-1.128-.39.09-.78-.15-.87-.54-.09-.39.15-.78.54-.87 4.46-1.02 8.29-.583 11.38 1.3.34.213.45.665.247 1.001zm1.454-3.235c-.268.425-.838.558-1.264.29-3.147-1.934-7.944-2.495-11.667-1.367-.484.146-.997-.13-1.143-.614-.146-.484.13-.997.614-1.143 4.252-1.29 9.534-.665 13.17 1.564.424.268.558.838.29 1.27zm.124-3.367C15.42 8.37 9.333 8.17 6.193 9.11c-.58.176-1.194-.152-1.37-.733-.176-.58.152-1.195.733-1.37 3.614-1.097 9.627-.885 13.422 1.578.507.31.668 1.97.358 1.474-.31.507-.97.668-1.318.358z" />
+      </svg>
+      Registrarse con Spotify
+    </button>
+
+    <div class="auth-footer">
+      Al registrarte aceptas nuestros
+      <a href="javascript:void(0)">Términos de uso</a> y
+      <a href="javascript:void(0)">Política de privacidad</a>
+      <br />
+      ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+    </div>
+  </div>
+</div>

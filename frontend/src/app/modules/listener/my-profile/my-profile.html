@@ -1,1 +1,99 @@
-<p>my-profile works!</p>
+<!--
+  Esta plantilla es SOLO el contenido "main" de la vista Mi Perfil
+  (tal como en el mockup v6). La sidebar es un componente aparte que
+  envolverá esta vista dentro de un layout tipo:
+
+  <div class="app-2col">
+    <app-sidebar></app-sidebar>
+    <router-outlet></router-outlet>  <-- aquí se monta este componente
+  </div>
+-->
+<main class="main">
+  <div class="topbar" style="padding-bottom:18px;">
+    <div class="topbar-row">
+      <h1>Mi perfil</h1>
+      <button class="btn-ghost" routerLink="/settings" style="margin-left:auto;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Editar perfil
+      </button>
+    </div>
+  </div>
+
+  <div class="profile-content" *ngIf="!loading">
+    <div class="profile-header">
+      <div class="avatar-xl"></div>
+      <div class="profile-info">
+        <h2>{{ user?.username || 'Invitado' }}</h2>
+        <div class="profile-bio">{{ user?.bio || 'Todavía no has agregado una biografía.' }}</div>
+
+        <div class="profile-stats">
+          <div class="stat-item"><div class="stat-num">{{ stats.reviews }}</div><div class="stat-label">Reseñas</div></div>
+          <div class="stat-item"><div class="stat-num">{{ stats.followers }}</div><div class="stat-label">Seguidores</div></div>
+          <div class="stat-item"><div class="stat-num">{{ stats.following }}</div><div class="stat-label">Siguiendo</div></div>
+          <div class="stat-item"><div class="stat-num">{{ stats.rating }}</div><div class="stat-label">Rating prom.</div></div>
+        </div>
+
+        <div class="level-badge">
+          <span class="lv">Nivel {{ user?.level || '-' }}</span>
+          <div class="level-bar-wrap"><div class="level-bar" [style.width.%]="levelProgressPercent"></div></div>
+          <span class="pts">{{ user?.points || 0 }} / {{ user?.nextLevel || 0 }} pts</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="badges-row">
+      <div class="badge-item" *ngFor="let badge of badges">
+        <div class="badge-icon">{{ badge.icon }}</div>
+        <div class="badge-name">{{ badge.name }}</div>
+      </div>
+    </div>
+
+    <div class="profile-tabs">
+      <div class="profile-tab" [class.active]="selectedTab === 'reviews'" (click)="selectTab('reviews')">Reseñas</div>
+      <div class="profile-tab" [class.active]="selectedTab === 'lists'" (click)="selectTab('lists')">Listas</div>
+      <div class="profile-tab" [class.active]="selectedTab === 'likes'" (click)="selectTab('likes')">Me gustaron</div>
+    </div>
+
+    <div *ngIf="selectedTab === 'reviews'" style="display:flex;flex-direction:column;gap:14px;">
+      <div class="review-card" *ngFor="let review of reviews">
+        <div class="review-head">
+          <div class="avatar-sm"></div>
+          <div class="meta">
+            <div class="uname">{{ user?.username }}</div>
+            <div class="when">{{ review.createdAt }}</div>
+          </div>
+        </div>
+        <div class="review-body">
+          <div class="album-art-wrap">
+            <div class="vinyl-peek"></div>
+            <div class="album-art-placeholder">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(143,156,174,0.3)" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+          </div>
+          <div class="review-content">
+            <div class="album-title">{{ review.album.name }}</div>
+            <div class="album-artist">{{ review.album.artist }} · {{ review.album.year }}</div>
+            <div class="stars">
+              <svg *ngFor="let star of [1,2,3,4,5]" [class]="star <= review.rating ? 'star-on' : 'star-off'" viewBox="0 0 24 24">
+                <path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z"/>
+              </svg>
+            </div>
+            <p class="review-text">{{ review.content }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty-state" *ngIf="reviews.length === 0">
+        <h3>Todavía no has escrito reseñas</h3>
+      </div>
+    </div>
+
+    <div *ngIf="selectedTab === 'lists'" class="empty-state">
+      <h3>No hay listas todavía</h3>
+    </div>
+
+    <div *ngIf="selectedTab === 'likes'" class="empty-state">
+      <h3>No hay álbumes favoritos</h3>
+    </div>
+  </div>
+</main>
