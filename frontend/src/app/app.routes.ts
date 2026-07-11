@@ -39,6 +39,18 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./modules/listener/my-profile/my-profile').then((m) => m.MyProfileComponent),
       },
+      {
+        path: 'listener/album-search',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/album-search/album-search').then((m) => m.AlbumSearch),
+      },
+      {
+        path: 'listener/album/:id',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/album-detail/album-detail').then((m) => m.AlbumDetail),
+      },
 
       // alias usado en el sidebar (routerLink="/home") -> apunta al feed del listener
       { path: 'home', redirectTo: 'listener/feed', pathMatch: 'full' },

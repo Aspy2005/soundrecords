@@ -1,1 +1,89 @@
-<p>album-detail works!</p>
+<!--
+  VISTA 5 del mockup (MU_1.html). Se monta dentro de MainLayout.
+-->
+<div class="topbar">
+  <div class="topbar-row">
+    <a class="back-link" routerLink="/listener/album-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+      Buscar
+    </a>
+  </div>
+</div>
+
+<div class="album-detail-main">
+  <div class="detail-status" *ngIf="loadingAlbum">Cargando álbum…</div>
+  <div class="detail-status error" *ngIf="!loadingAlbum && albumError">{{ albumError }}</div>
+
+  <ng-container *ngIf="!loadingAlbum && !albumError && album as a">
+    <div class="album-hero">
+      <img *ngIf="a.coverUrl" class="album-hero-art" [src]="a.coverUrl" [alt]="a.name" />
+      <div *ngIf="!a.coverUrl" class="album-hero-art-placeholder">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(143,156,174,0.3)" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </div>
+      <div class="album-meta">
+        <div class="eyebrow">ÁLBUM</div>
+        <h2>{{ a.name }}</h2>
+        <div class="artist">{{ a.artist }}</div>
+        <div class="year-genre">
+          <ng-container *ngIf="a.releaseYear">{{ a.releaseYear }}</ng-container>
+          <ng-container *ngIf="tracklist.length"> · {{ tracklist.length }} pistas</ng-container>
+        </div>
+
+        <div class="album-rating-row" *ngIf="a.platformRating != null">
+          <div class="big-rating">{{ formattedRating }}</div>
+          <div class="rating-detail">
+            <app-star-rating [rating]="a.platformRating ?? 0"></app-star-rating>
+            <div class="review-count">
+              {{ a.platformReviewsCount ?? totalReviews }} reseñas en la plataforma
+            </div>
+          </div>
+        </div>
+        <div class="album-rating-row" *ngIf="a.platformRating == null">
+          <div class="review-count">Todavía no tiene reseñas en la plataforma. ¡Sé el primero!</div>
+        </div>
+
+        <div class="album-actions">
+          <button class="btn-ghost" disabled title="Próximamente">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
+            </svg>
+            Guardar en lista
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="tracklist.length">
+      <div class="section-divider"></div>
+      <div class="section-title">Tracklist</div>
+      <div class="tracklist">
+        <div class="track-row" *ngFor="let track of tracklist; let i = index">
+          <span class="track-num">{{ i + 1 }}</span>
+          <span class="track-title">{{ track }}</span>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="section-divider"></div>
+    <div class="reviews-section">
+      <div class="reviews-header">
+        <div class="section-title" style="margin:0;">Reseñas de la comunidad</div>
+        <span class="reviews-total" *ngIf="!loadingReviews">{{ totalReviews }} en total</span>
+      </div>
+
+      <div class="detail-status" *ngIf="loadingReviews">Cargando reseñas…</div>
+      <div class="detail-status" *ngIf="!loadingReviews && reviews.length === 0">
+        Aún no hay reseñas para este álbum. Sé el primero en reseñarlo.
+      </div>
+
+      <div class="reviews-list" *ngIf="!loadingReviews && reviews.length > 0">
+        <app-review-card *ngFor="let review of reviews" [review]="review"></app-review-card>
+      </div>
+    </div>
+  </ng-container>
+</div>

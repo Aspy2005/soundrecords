@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { StarRating } from '../star-rating/star-rating';
 import { Review, ReportReason } from '../../core/models/review.model';
@@ -37,6 +38,7 @@ export class ReviewCard {
   constructor(
     private reviewService: ReviewService,
     private userService: UserService,
+    private router: Router,
   ) {}
 
   get isFollowing(): boolean {
@@ -109,7 +111,6 @@ export class ReviewCard {
       );
       return;
     }
-    // TODO: navegar cuando exista la ruta de detalle de álbum registrada
-    // en app.routes.ts (el componente AlbumDetail todavía es un stub).
+    this.router.navigate(['/listener/album', this.review.spotifyAlbumId]);
   }
 }

@@ -41,252 +41,218 @@ The content is organized as follows:
 </file_summary>
 
 <directory_structure>
-frontend/.editorconfig
-frontend/.gitignore
-frontend/.prettierrc
-frontend/.vscode/extensions.json
-frontend/.vscode/launch.json
-frontend/.vscode/mcp.json
-frontend/.vscode/tasks.json
-frontend/angular.json
-frontend/package.json
-frontend/public/favicon.ico
-frontend/README.md
-frontend/src/app/app.config.ts
-frontend/src/app/app.html
-frontend/src/app/app.routes.ts
-frontend/src/app/app.scss
-frontend/src/app/app.spec.ts
-frontend/src/app/app.ts
-frontend/src/app/core/guards/auth-guard.spec.ts
-frontend/src/app/core/guards/auth-guard.ts
-frontend/src/app/core/interceptors/jwt-interceptor.spec.ts
-frontend/src/app/core/interceptors/jwt-interceptor.ts
-frontend/src/app/core/models/album.model.ts
-frontend/src/app/core/models/badge.model.ts
-frontend/src/app/core/models/mission.model.ts
-frontend/src/app/core/models/review.model.ts
-frontend/src/app/core/models/user.model.ts
-frontend/src/app/core/services/album.spec.ts
-frontend/src/app/core/services/album.ts
-frontend/src/app/core/services/artist.spec.ts
-frontend/src/app/core/services/artist.ts
-frontend/src/app/core/services/auth.spec.ts
-frontend/src/app/core/services/auth.ts
-frontend/src/app/core/services/mission.spec.ts
-frontend/src/app/core/services/mission.ts
-frontend/src/app/core/services/review.spec.ts
-frontend/src/app/core/services/review.ts
-frontend/src/app/core/services/user.spec.ts
-frontend/src/app/core/services/user.ts
-frontend/src/app/modules/artist/artist-dashboard/artist-dashboard.html
-frontend/src/app/modules/artist/artist-dashboard/artist-dashboard.scss
-frontend/src/app/modules/artist/artist-dashboard/artist-dashboard.spec.ts
-frontend/src/app/modules/artist/artist-dashboard/artist-dashboard.ts
-frontend/src/app/modules/artist/artist-module.ts
-frontend/src/app/modules/artist/artist-public/artist-public.html
-frontend/src/app/modules/artist/artist-public/artist-public.scss
-frontend/src/app/modules/artist/artist-public/artist-public.spec.ts
-frontend/src/app/modules/artist/artist-public/artist-public.ts
-frontend/src/app/modules/artist/artist-routing-module.ts
-frontend/src/app/modules/artist/discover/discover.html
-frontend/src/app/modules/artist/discover/discover.scss
-frontend/src/app/modules/artist/discover/discover.spec.ts
-frontend/src/app/modules/artist/discover/discover.ts
-frontend/src/app/modules/auth/auth-module.ts
-frontend/src/app/modules/auth/auth-routing-module.ts
-frontend/src/app/modules/auth/login/login.html
-frontend/src/app/modules/auth/login/login.scss
-frontend/src/app/modules/auth/login/login.spec.ts
-frontend/src/app/modules/auth/login/login.ts
-frontend/src/app/modules/auth/onboarding/onboarding.html
-frontend/src/app/modules/auth/onboarding/onboarding.scss
-frontend/src/app/modules/auth/onboarding/onboarding.spec.ts
-frontend/src/app/modules/auth/onboarding/onboarding.ts
-frontend/src/app/modules/auth/plans/plans.html
-frontend/src/app/modules/auth/plans/plans.scss
-frontend/src/app/modules/auth/plans/plans.spec.ts
-frontend/src/app/modules/auth/plans/plans.ts
-frontend/src/app/modules/auth/register/register.html
-frontend/src/app/modules/auth/register/register.scss
-frontend/src/app/modules/auth/register/register.spec.ts
-frontend/src/app/modules/auth/register/register.ts
-frontend/src/app/modules/auth/settings/settings.html
-frontend/src/app/modules/auth/settings/settings.scss
-frontend/src/app/modules/auth/settings/settings.spec.ts
-frontend/src/app/modules/auth/settings/settings.ts
-frontend/src/app/modules/gamification/badge-store/badge-store.html
-frontend/src/app/modules/gamification/badge-store/badge-store.scss
-frontend/src/app/modules/gamification/badge-store/badge-store.spec.ts
-frontend/src/app/modules/gamification/badge-store/badge-store.ts
-frontend/src/app/modules/gamification/gamification-module.ts
-frontend/src/app/modules/gamification/gamification-routing-module.ts
-frontend/src/app/modules/gamification/missions/missions.html
-frontend/src/app/modules/gamification/missions/missions.scss
-frontend/src/app/modules/gamification/missions/missions.spec.ts
-frontend/src/app/modules/gamification/missions/missions.ts
-frontend/src/app/modules/interaction/interaction-module.ts
-frontend/src/app/modules/interaction/interaction-routing-module.ts
-frontend/src/app/modules/interaction/notifications/notifications.html
-frontend/src/app/modules/interaction/notifications/notifications.scss
-frontend/src/app/modules/interaction/notifications/notifications.spec.ts
-frontend/src/app/modules/interaction/notifications/notifications.ts
-frontend/src/app/modules/listener/album-detail/album-detail.html
-frontend/src/app/modules/listener/album-detail/album-detail.scss
-frontend/src/app/modules/listener/album-detail/album-detail.spec.ts
-frontend/src/app/modules/listener/album-detail/album-detail.ts
-frontend/src/app/modules/listener/album-search/album-search.html
-frontend/src/app/modules/listener/album-search/album-search.scss
-frontend/src/app/modules/listener/album-search/album-search.spec.ts
-frontend/src/app/modules/listener/album-search/album-search.ts
-frontend/src/app/modules/listener/collections/collections.html
-frontend/src/app/modules/listener/collections/collections.scss
-frontend/src/app/modules/listener/collections/collections.spec.ts
-frontend/src/app/modules/listener/collections/collections.ts
-frontend/src/app/modules/listener/explore/explore.html
-frontend/src/app/modules/listener/explore/explore.scss
-frontend/src/app/modules/listener/explore/explore.spec.ts
-frontend/src/app/modules/listener/explore/explore.ts
-frontend/src/app/modules/listener/feed/feed.html
-frontend/src/app/modules/listener/feed/feed.scss
-frontend/src/app/modules/listener/feed/feed.spec.ts
-frontend/src/app/modules/listener/feed/feed.ts
-frontend/src/app/modules/listener/genre-view/genre-view.html
-frontend/src/app/modules/listener/genre-view/genre-view.scss
-frontend/src/app/modules/listener/genre-view/genre-view.spec.ts
-frontend/src/app/modules/listener/genre-view/genre-view.ts
-frontend/src/app/modules/listener/listener-module.ts
-frontend/src/app/modules/listener/listener-routing-module.ts
-frontend/src/app/modules/listener/my-profile/my-profile.html
-frontend/src/app/modules/listener/my-profile/my-profile.scss
-frontend/src/app/modules/listener/my-profile/my-profile.spec.ts
-frontend/src/app/modules/listener/my-profile/my-profile.ts
-frontend/src/app/modules/listener/review-detail/review-detail.html
-frontend/src/app/modules/listener/review-detail/review-detail.scss
-frontend/src/app/modules/listener/review-detail/review-detail.spec.ts
-frontend/src/app/modules/listener/review-detail/review-detail.ts
-frontend/src/app/modules/listener/user-profile/user-profile.html
-frontend/src/app/modules/listener/user-profile/user-profile.scss
-frontend/src/app/modules/listener/user-profile/user-profile.spec.ts
-frontend/src/app/modules/listener/user-profile/user-profile.ts
-frontend/src/app/modules/recommendations/recommendations-module.ts
-frontend/src/app/modules/recommendations/recommendations-routing-module.ts
-frontend/src/app/modules/recommendations/recommender/recommender.html
-frontend/src/app/modules/recommendations/recommender/recommender.scss
-frontend/src/app/modules/recommendations/recommender/recommender.spec.ts
-frontend/src/app/modules/recommendations/recommender/recommender.ts
-frontend/src/app/shared/album-card/album-card.html
-frontend/src/app/shared/album-card/album-card.scss
-frontend/src/app/shared/album-card/album-card.spec.ts
-frontend/src/app/shared/album-card/album-card.ts
-frontend/src/app/shared/badge-card/badge-card.html
-frontend/src/app/shared/badge-card/badge-card.scss
-frontend/src/app/shared/badge-card/badge-card.spec.ts
-frontend/src/app/shared/badge-card/badge-card.ts
-frontend/src/app/shared/navbar/navbar.html
-frontend/src/app/shared/navbar/navbar.scss
-frontend/src/app/shared/navbar/navbar.spec.ts
-frontend/src/app/shared/navbar/navbar.ts
-frontend/src/app/shared/review-card/review-card.html
-frontend/src/app/shared/review-card/review-card.scss
-frontend/src/app/shared/review-card/review-card.spec.ts
-frontend/src/app/shared/review-card/review-card.ts
-frontend/src/app/shared/star-rating/star-rating.html
-frontend/src/app/shared/star-rating/star-rating.scss
-frontend/src/app/shared/star-rating/star-rating.spec.ts
-frontend/src/app/shared/star-rating/star-rating.ts
-frontend/src/index.html
-frontend/src/main.ts
-frontend/src/styles.scss
-frontend/tsconfig.app.json
-frontend/tsconfig.json
-frontend/tsconfig.spec.json
+frontend/
+  .vscode/
+    extensions.json
+    launch.json
+    mcp.json
+    tasks.json
+  public/
+    favicon.ico
+  src/
+    app/
+      core/
+        guards/
+          auth-guard.spec.ts
+          auth-guard.ts
+        interceptors/
+          jwt-interceptor.spec.ts
+          jwt-interceptor.ts
+        models/
+          album.model.ts
+          badge.model.ts
+          mission.model.ts
+          review.model.ts
+          user.model.ts
+        services/
+          album.spec.ts
+          album.ts
+          artist.spec.ts
+          artist.ts
+          auth.spec.ts
+          auth.ts
+          mission.spec.ts
+          mission.ts
+          review.spec.ts
+          review.ts
+          user.spec.ts
+          user.ts
+      modules/
+        artist/
+          artist-dashboard/
+            artist-dashboard.html
+            artist-dashboard.scss
+            artist-dashboard.spec.ts
+            artist-dashboard.ts
+          artist-public/
+            artist-public.html
+            artist-public.scss
+            artist-public.spec.ts
+            artist-public.ts
+          discover/
+            discover.html
+            discover.scss
+            discover.spec.ts
+            discover.ts
+          artist-module.ts
+          artist-routing-module.ts
+        auth/
+          login/
+            login.html
+            login.scss
+            login.spec.ts
+            login.ts
+          onboarding/
+            onboarding.html
+            onboarding.scss
+            onboarding.spec.ts
+            onboarding.ts
+          plans/
+            plans.html
+            plans.scss
+            plans.spec.ts
+            plans.ts
+          register/
+            register.html
+            register.scss
+            register.spec.ts
+            register.ts
+          settings/
+            settings.html
+            settings.scss
+            settings.spec.ts
+            settings.ts
+          auth-module.ts
+          auth-routing-module.ts
+        gamification/
+          badge-store/
+            badge-store.html
+            badge-store.scss
+            badge-store.spec.ts
+            badge-store.ts
+          missions/
+            missions.html
+            missions.scss
+            missions.spec.ts
+            missions.ts
+          gamification-module.ts
+          gamification-routing-module.ts
+        interaction/
+          notifications/
+            notifications.html
+            notifications.scss
+            notifications.spec.ts
+            notifications.ts
+          interaction-module.ts
+          interaction-routing-module.ts
+        listener/
+          album-detail/
+            album-detail.html
+            album-detail.scss
+            album-detail.spec.ts
+            album-detail.ts
+          album-search/
+            album-search.html
+            album-search.scss
+            album-search.spec.ts
+            album-search.ts
+          collections/
+            collections.html
+            collections.scss
+            collections.spec.ts
+            collections.ts
+          explore/
+            explore.html
+            explore.scss
+            explore.spec.ts
+            explore.ts
+          feed/
+            feed.html
+            feed.scss
+            feed.spec.ts
+            feed.ts
+          genre-view/
+            genre-view.html
+            genre-view.scss
+            genre-view.spec.ts
+            genre-view.ts
+          my-profile/
+            my-profile.html
+            my-profile.scss
+            my-profile.spec.ts
+            my-profile.ts
+          review-detail/
+            review-detail.html
+            review-detail.scss
+            review-detail.spec.ts
+            review-detail.ts
+          user-profile/
+            user-profile.html
+            user-profile.scss
+            user-profile.spec.ts
+            user-profile.ts
+          listener-module.ts
+          listener-routing-module.ts
+        recommendations/
+          recommender/
+            recommender.html
+            recommender.scss
+            recommender.spec.ts
+            recommender.ts
+          recommendations-module.ts
+          recommendations-routing-module.ts
+      shared/
+        album-card/
+          album-card.html
+          album-card.scss
+          album-card.spec.ts
+          album-card.ts
+        badge-card/
+          badge-card.html
+          badge-card.scss
+          badge-card.spec.ts
+          badge-card.ts
+        main-layout/
+          main-layout.html
+          main-layout.scss
+          main-layout.ts
+        navbar/
+          navbar.html
+          navbar.scss
+          navbar.spec.ts
+          navbar.ts
+        review-card/
+          review-card.html
+          review-card.scss
+          review-card.spec.ts
+          review-card.ts
+        star-rating/
+          star-rating.html
+          star-rating.scss
+          star-rating.spec.ts
+          star-rating.ts
+      app.config.ts
+      app.html
+      app.routes.ts
+      app.scss
+      app.spec.ts
+      app.ts
+    index.html
+    main.ts
+    styles.scss
+  .editorconfig
+  .gitignore
+  .prettierrc
+  angular.json
+  package.json
+  README.md
+  tsconfig.app.json
+  tsconfig.json
+  tsconfig.spec.json
 </directory_structure>
 
 <files>
 This section contains the contents of the repository's files.
-
-<file path="frontend/.editorconfig">
-# Editor configuration, see https://editorconfig.org
-root = true
-
-[*]
-charset = utf-8
-indent_style = space
-indent_size = 2
-insert_final_newline = true
-trim_trailing_whitespace = true
-
-[*.ts]
-quote_type = single
-ij_typescript_use_double_quotes = false
-
-[*.md]
-max_line_length = off
-trim_trailing_whitespace = false
-</file>
-
-<file path="frontend/.gitignore">
-# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
-
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
-.idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-workspace
-
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/mcp.json
-.history/*
-
-# Miscellaneous
-/.angular/cache
-.sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-__screenshots__/
-
-# System files
-.DS_Store
-Thumbs.db
-</file>
-
-<file path="frontend/.prettierrc">
-{
-  "printWidth": 100,
-  "singleQuote": true,
-  "overrides": [
-    {
-      "files": "*.html",
-      "options": {
-        "parser": "angular"
-      }
-    }
-  ]
-}
-</file>
 
 <file path="frontend/.vscode/extensions.json">
 {
@@ -372,229 +338,6 @@ Thumbs.db
       }
     }
   ]
-}
-</file>
-
-<file path="frontend/angular.json">
-{
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "npm"
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "frontend": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
-          "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.scss"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "frontend:build:production"
-            },
-            "development": {
-              "buildTarget": "frontend:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test"
-        }
-      }
-    }
-  }
-}
-</file>
-
-<file path="frontend/package.json">
-{
-  "name": "frontend",
-  "version": "0.0.0",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "private": true,
-  "packageManager": "npm@10.8.2",
-  "dependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/compiler": "^21.2.0",
-    "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0",
-    "@angular/platform-browser": "^21.2.0",
-    "@angular/router": "^21.2.0",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@angular/build": "^21.2.16",
-    "@angular/cli": "^21.2.16",
-    "@angular/compiler-cli": "^21.2.0",
-    "jsdom": "^28.0.0",
-    "prettier": "^3.8.1",
-    "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
-  }
-}
-</file>
-
-<file path="frontend/README.md">
-# Frontend
-
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.16.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-</file>
-
-<file path="frontend/src/app/app.scss">
-
-</file>
-
-<file path="frontend/src/app/app.spec.ts">
-import { TestBed } from '@angular/core/testing';
-import { App } from './app';
-
-describe('App', () => {
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [App],
-    }).compileComponents();
-  });
-
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(App);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
-  });
-
-  it('should render title', async () => {
-    const fixture = TestBed.createComponent(App);
-    await fixture.whenStable();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
-  });
-});
-</file>
-
-<file path="frontend/src/app/app.ts">
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-
-@Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.scss'
-})
-export class App {
-  protected readonly title = signal('frontend');
 }
 </file>
 
@@ -836,19 +579,6 @@ import { Component } from '@angular/core';
 export class ArtistDashboard {}
 </file>
 
-<file path="frontend/src/app/modules/artist/artist-module.ts">
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { ArtistRoutingModule } from './artist-routing-module';
-
-@NgModule({
-  declarations: [],
-  imports: [CommonModule, ArtistRoutingModule],
-})
-export class ArtistModule {}
-</file>
-
 <file path="frontend/src/app/modules/artist/artist-public/artist-public.html">
 <p>artist-public works!</p>
 </file>
@@ -892,19 +622,6 @@ import { Component } from '@angular/core';
   styleUrl: './artist-public.scss',
 })
 export class ArtistPublic {}
-</file>
-
-<file path="frontend/src/app/modules/artist/artist-routing-module.ts">
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class ArtistRoutingModule {}
 </file>
 
 <file path="frontend/src/app/modules/artist/discover/discover.html">
@@ -952,20 +669,20 @@ import { Component } from '@angular/core';
 export class Discover {}
 </file>
 
-<file path="frontend/src/app/modules/auth/auth-module.ts">
+<file path="frontend/src/app/modules/artist/artist-module.ts">
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { AuthRoutingModule } from './auth-routing-module';
+import { ArtistRoutingModule } from './artist-routing-module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, AuthRoutingModule],
+  imports: [CommonModule, ArtistRoutingModule],
 })
-export class AuthModule {}
+export class ArtistModule {}
 </file>
 
-<file path="frontend/src/app/modules/auth/auth-routing-module.ts">
+<file path="frontend/src/app/modules/artist/artist-routing-module.ts">
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -975,7 +692,7 @@ const routes: Routes = [];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AuthRoutingModule {}
+export class ArtistRoutingModule {}
 </file>
 
 <file path="frontend/src/app/modules/auth/onboarding/onboarding.html">
@@ -1068,6 +785,32 @@ import { Component } from '@angular/core';
 export class Plans {}
 </file>
 
+<file path="frontend/src/app/modules/auth/auth-module.ts">
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { AuthRoutingModule } from './auth-routing-module';
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule, AuthRoutingModule],
+})
+export class AuthModule {}
+</file>
+
+<file path="frontend/src/app/modules/auth/auth-routing-module.ts">
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class AuthRoutingModule {}
+</file>
+
 <file path="frontend/src/app/modules/gamification/badge-store/badge-store.html">
 <p>badge-store works!</p>
 </file>
@@ -1111,32 +854,6 @@ import { Component } from '@angular/core';
   styleUrl: './badge-store.scss',
 })
 export class BadgeStore {}
-</file>
-
-<file path="frontend/src/app/modules/gamification/gamification-module.ts">
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { GamificationRoutingModule } from './gamification-routing-module';
-
-@NgModule({
-  declarations: [],
-  imports: [CommonModule, GamificationRoutingModule],
-})
-export class GamificationModule {}
-</file>
-
-<file path="frontend/src/app/modules/gamification/gamification-routing-module.ts">
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class GamificationRoutingModule {}
 </file>
 
 <file path="frontend/src/app/modules/gamification/missions/missions.html">
@@ -1184,20 +901,20 @@ import { Component } from '@angular/core';
 export class Missions {}
 </file>
 
-<file path="frontend/src/app/modules/interaction/interaction-module.ts">
+<file path="frontend/src/app/modules/gamification/gamification-module.ts">
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { InteractionRoutingModule } from './interaction-routing-module';
+import { GamificationRoutingModule } from './gamification-routing-module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, InteractionRoutingModule],
+  imports: [CommonModule, GamificationRoutingModule],
 })
-export class InteractionModule {}
+export class GamificationModule {}
 </file>
 
-<file path="frontend/src/app/modules/interaction/interaction-routing-module.ts">
+<file path="frontend/src/app/modules/gamification/gamification-routing-module.ts">
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -1207,7 +924,7 @@ const routes: Routes = [];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class InteractionRoutingModule {}
+export class GamificationRoutingModule {}
 </file>
 
 <file path="frontend/src/app/modules/interaction/notifications/notifications.html">
@@ -1253,6 +970,32 @@ import { Component } from '@angular/core';
   styleUrl: './notifications.scss',
 })
 export class Notifications {}
+</file>
+
+<file path="frontend/src/app/modules/interaction/interaction-module.ts">
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { InteractionRoutingModule } from './interaction-routing-module';
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule, InteractionRoutingModule],
+})
+export class InteractionModule {}
+</file>
+
+<file path="frontend/src/app/modules/interaction/interaction-routing-module.ts">
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class InteractionRoutingModule {}
 </file>
 
 <file path="frontend/src/app/modules/listener/album-detail/album-detail.html">
@@ -1505,32 +1248,6 @@ import { Component } from '@angular/core';
 export class GenreView {}
 </file>
 
-<file path="frontend/src/app/modules/listener/listener-module.ts">
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { ListenerRoutingModule } from './listener-routing-module';
-
-@NgModule({
-  declarations: [],
-  imports: [CommonModule, ListenerRoutingModule],
-})
-export class ListenerModule {}
-</file>
-
-<file path="frontend/src/app/modules/listener/listener-routing-module.ts">
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
-})
-export class ListenerRoutingModule {}
-</file>
-
 <file path="frontend/src/app/modules/listener/my-profile/my-profile.spec.ts">
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -1646,20 +1363,20 @@ import { Component } from '@angular/core';
 export class UserProfile {}
 </file>
 
-<file path="frontend/src/app/modules/recommendations/recommendations-module.ts">
+<file path="frontend/src/app/modules/listener/listener-module.ts">
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { RecommendationsRoutingModule } from './recommendations-routing-module';
+import { ListenerRoutingModule } from './listener-routing-module';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, RecommendationsRoutingModule],
+  imports: [CommonModule, ListenerRoutingModule],
 })
-export class RecommendationsModule {}
+export class ListenerModule {}
 </file>
 
-<file path="frontend/src/app/modules/recommendations/recommendations-routing-module.ts">
+<file path="frontend/src/app/modules/listener/listener-routing-module.ts">
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -1669,7 +1386,7 @@ const routes: Routes = [];
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class RecommendationsRoutingModule {}
+export class ListenerRoutingModule {}
 </file>
 
 <file path="frontend/src/app/modules/recommendations/recommender/recommender.html">
@@ -1715,6 +1432,32 @@ import { Component } from '@angular/core';
   styleUrl: './recommender.scss',
 })
 export class Recommender {}
+</file>
+
+<file path="frontend/src/app/modules/recommendations/recommendations-module.ts">
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { RecommendationsRoutingModule } from './recommendations-routing-module';
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule, RecommendationsRoutingModule],
+})
+export class RecommendationsModule {}
+</file>
+
+<file path="frontend/src/app/modules/recommendations/recommendations-routing-module.ts">
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
+})
+export class RecommendationsRoutingModule {}
 </file>
 
 <file path="frontend/src/app/shared/album-card/album-card.html">
@@ -1807,12 +1550,58 @@ import { Component } from '@angular/core';
 export class BadgeCard {}
 </file>
 
-<file path="frontend/src/app/shared/navbar/navbar.html">
-<p>navbar works!</p>
+<file path="frontend/src/app/shared/main-layout/main-layout.html">
+<!--
+  Shell de las vistas autenticadas: columna fija del sidebar + el resto
+  del ancho para la vista activa (feed, my-profile, settings, ...).
+  Cada vista hija maneja su propio layout interno (p. ej. feed.html arma
+  su propia grilla main + rail dentro de este espacio de contenido).
+-->
+<div class="shell">
+  <app-sidebar></app-sidebar>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
 </file>
 
-<file path="frontend/src/app/shared/navbar/navbar.scss">
+<file path="frontend/src/app/shared/main-layout/main-layout.scss">
+:host {
+  display: block;
+}
 
+.shell {
+  display: grid;
+  grid-template-columns: 236px 1fr;
+  min-height: 100vh;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.content {
+  min-width: 0;
+}
+
+@media (max-width: 768px) {
+  .shell {
+    grid-template-columns: 1fr;
+  }
+}
+</file>
+
+<file path="frontend/src/app/shared/main-layout/main-layout.ts">
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+import { Navbar } from '../navbar/navbar';
+
+@Component({
+  selector: 'app-main-layout',
+  standalone: true,
+  imports: [RouterOutlet, Navbar],
+  templateUrl: './main-layout.html',
+  styleUrl: './main-layout.scss',
+})
+export class MainLayout {}
 </file>
 
 <file path="frontend/src/app/shared/navbar/navbar.spec.ts">
@@ -1838,18 +1627,6 @@ describe('Navbar', () => {
     expect(component).toBeTruthy();
   });
 });
-</file>
-
-<file path="frontend/src/app/shared/navbar/navbar.ts">
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-navbar',
-  imports: [],
-  templateUrl: './navbar.html',
-  styleUrl: './navbar.scss',
-})
-export class Navbar {}
 </file>
 
 <file path="frontend/src/app/shared/review-card/review-card.spec.ts">
@@ -1902,6 +1679,51 @@ describe('StarRating', () => {
 });
 </file>
 
+<file path="frontend/src/app/app.scss">
+
+</file>
+
+<file path="frontend/src/app/app.spec.ts">
+import { TestBed } from '@angular/core/testing';
+import { App } from './app';
+
+describe('App', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [App],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(App);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it('should render title', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, frontend');
+  });
+});
+</file>
+
+<file path="frontend/src/app/app.ts">
+import { Component, signal } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
+
+@Component({
+  selector: 'app-root',
+  imports: [RouterOutlet],
+  templateUrl: './app.html',
+  styleUrl: './app.scss'
+})
+export class App {
+  protected readonly title = signal('frontend');
+}
+</file>
+
 <file path="frontend/src/main.ts">
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
@@ -1909,6 +1731,266 @@ import { App } from './app/app';
 
 bootstrapApplication(App, appConfig)
   .catch((err) => console.error(err));
+</file>
+
+<file path="frontend/.editorconfig">
+# Editor configuration, see https://editorconfig.org
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.ts]
+quote_type = single
+ij_typescript_use_double_quotes = false
+
+[*.md]
+max_line_length = off
+trim_trailing_whitespace = false
+</file>
+
+<file path="frontend/.gitignore">
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/mcp.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# System files
+.DS_Store
+Thumbs.db
+</file>
+
+<file path="frontend/.prettierrc">
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
+}
+</file>
+
+<file path="frontend/angular.json">
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm"
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "frontend:build:production"
+            },
+            "development": {
+              "buildTarget": "frontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
+  }
+}
+</file>
+
+<file path="frontend/package.json">
+{
+  "name": "frontend",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
+  },
+  "private": true,
+  "packageManager": "npm@10.8.2",
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "@angular/router": "^21.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.16",
+    "@angular/cli": "^21.2.16",
+    "@angular/compiler-cli": "^21.2.0",
+    "jsdom": "^28.0.0",
+    "prettier": "^3.8.1",
+    "typescript": "~5.9.2",
+    "vitest": "^4.0.8"
+  }
+}
+</file>
+
+<file path="frontend/README.md">
+# Frontend
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.16.
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 </file>
 
 <file path="frontend/tsconfig.app.json">
@@ -1981,27 +2063,6 @@ bootstrapApplication(App, appConfig)
     "src/**/*.spec.ts"
   ]
 }
-</file>
-
-<file path="frontend/src/app/app.config.ts">
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient, withInterceptors } from '@angular/common/http';
-
-import { routes } from './app.routes';
-import { jwtInterceptor } from './core/interceptors/jwt-interceptor';
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
-    provideHttpClient(withInterceptors([jwtInterceptor])),
-  ],
-};
-</file>
-
-<file path="frontend/src/app/app.html">
-<router-outlet ><router-outlet />
 </file>
 
 <file path="frontend/src/app/core/guards/auth-guard.ts">
@@ -5010,6 +5071,335 @@ export class MyProfileComponent implements OnInit {
 }
 </file>
 
+<file path="frontend/src/app/shared/navbar/navbar.html">
+<!--
+  Sidebar global de la app (VISTA 1 del mockup MU_1.html).
+  Se monta una sola vez dentro de app-main-layout, junto al <router-outlet>
+  de las vistas protegidas (feed, my-profile, settings, etc.).
+-->
+<aside class="sidebar">
+  <div class="logo" routerLink="/listener/feed">
+    <div class="logo-mark"></div>
+    <div class="logo-text">SOUND<span>RECORDS</span></div>
+  </div>
+
+  <nav>
+    <div class="nav-group">
+      <a class="nav-item" routerLink="/listener/feed" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        </svg>
+        Inicio
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M21 21l-4.3-4.3" />
+        </svg>
+        Buscar álbumes
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 11l18-7-7 18-2-8-9-3z" />
+        </svg>
+        Explorar
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Tu cuenta</div>
+
+      <a class="nav-item" routerLink="/listener/my-profile" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+        </svg>
+        Mi perfil
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="7" height="7" rx="1.5" />
+          <rect x="14" y="4" width="7" height="7" rx="1.5" />
+          <rect x="3" y="15" width="7" height="6" rx="1.5" />
+          <rect x="14" y="15" width="7" height="6" rx="1.5" />
+        </svg>
+        Mis listas
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Comunidad</div>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l2.7 6.6L22 9l-5 4.6L18.5 22 12 17.8 5.5 22 7 13.6 2 9l7.3-.4z" />
+        </svg>
+        Misiones
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="2.4" />
+        </svg>
+        Artistas emergentes
+      </a>
+    </div>
+  </nav>
+
+  <div class="sidebar-bottom" *ngIf="user$ | async as user">
+    <a class="user-chip" routerLink="/settings" title="Ir a configuración">
+      <div class="avatar-sm" [style.background-image]="user.photoUrl ? 'url(' + user.photoUrl + ')' : null"></div>
+      <div>
+        <div class="uname">{{ user.username }}</div>
+        <div class="ulevel">Nivel {{ user.level }} · {{ user.points | number }} pts</div>
+      </div>
+    </a>
+    <button class="logout-btn" type="button" title="Cerrar sesión" (click)="logout()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+        <path d="M16 17l5-5-5-5" />
+        <path d="M21 12H9" />
+      </svg>
+    </button>
+  </div>
+</aside>
+</file>
+
+<file path="frontend/src/app/shared/navbar/navbar.scss">
+:host {
+  --bg: #0a1128;
+  --accent: #17d1e8;
+  --accent-2: #9b5de5;
+  --text: #ffffff;
+  --text-secondary: #8f9cae;
+  --card: #131c38;
+  --card-border: rgba(143, 156, 174, 0.14);
+  --accent-glow: rgba(23, 209, 232, 0.25);
+  --danger: #f15f6c;
+  --success: #2ee89a;
+
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sidebar {
+  padding: 28px 18px 24px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--card-border);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px 32px;
+  cursor: pointer;
+}
+.logo-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, var(--bg) 0 28%, transparent 29%),
+    conic-gradient(from 180deg, var(--accent), #0a6e7a 40%, var(--accent));
+  box-shadow: 0 0 16px var(--accent-glow);
+  flex-shrink: 0;
+}
+.logo-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.logo-text span {
+  color: var(--accent);
+}
+
+.nav-group {
+  margin-bottom: 8px;
+}
+.nav-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--text-secondary);
+  padding: 14px 10px 8px;
+  font-weight: 600;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: background 0.15s, color 0.15s;
+  position: relative;
+  cursor: pointer;
+}
+.nav-item:hover {
+  background: rgba(143, 156, 174, 0.08);
+  color: var(--text);
+}
+.nav-item.active {
+  background: rgba(23, 209, 232, 0.1);
+  color: var(--text);
+}
+.nav-item.active::before {
+  content: '';
+  position: absolute;
+  left: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 18px;
+  background: var(--accent);
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0 0 8px var(--accent-glow);
+}
+.nav-icon {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+}
+.nav-item.active .nav-icon {
+  color: var(--accent);
+}
+
+/* Ítems de módulos aún no implementados: visibles pero no navegables */
+.nav-item.is-disabled {
+  cursor: default;
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-top: 14px;
+}
+
+.user-chip {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  transition: border-color 0.15s;
+}
+.user-chip:hover {
+  border-color: var(--accent);
+}
+.user-chip > div {
+  min-width: 0;
+}
+.uname {
+  font-size: 13.5px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ulevel {
+  font-size: 11.5px;
+  color: var(--accent);
+}
+
+.avatar-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3a4a78, #1b2750);
+  background-size: cover;
+  background-position: center;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(23, 209, 232, 0.4);
+}
+
+.logout-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: color 0.15s, border-color 0.15s;
+}
+.logout-btn:hover {
+  color: var(--danger);
+  border-color: var(--danger);
+}
+.logout-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+</file>
+
+<file path="frontend/src/app/shared/navbar/navbar.ts">
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from '../../core/services/auth';
+import { User } from '../../core/models/user.model';
+
+@Component({
+  selector: 'app-sidebar',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './navbar.html',
+  styleUrl: './navbar.scss',
+})
+export class Navbar {
+  user$: Observable<User | null>;
+
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {
+    this.user$ = this.authService.currentUser$;
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
+  }
+}
+</file>
+
 <file path="frontend/src/app/shared/review-card/review-card.html">
 <article class="review-card">
   <div class="review-head">
@@ -5490,6 +5880,27 @@ export class StarRating {
 }
 </file>
 
+<file path="frontend/src/app/app.config.ts">
+import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+
+import { routes } from './app.routes';
+import { jwtInterceptor } from './core/interceptors/jwt-interceptor';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideBrowserGlobalErrorListeners(),
+    provideRouter(routes),
+    provideHttpClient(withInterceptors([jwtInterceptor])),
+  ],
+};
+</file>
+
+<file path="frontend/src/app/app.html">
+<router-outlet ><router-outlet />
+</file>
+
 <file path="frontend/src/index.html">
 <!doctype html>
 <html lang="en">
@@ -5595,28 +6006,35 @@ export const routes: Routes = [
       import('./modules/auth/register/register').then((m) => m.RegisterComponent),
   },
 
+  // Vistas autenticadas: comparten el sidebar a través de MainLayout.
   {
-    path: 'settings',
-    //canActivate: [authGuard],
+    path: '',
     loadComponent: () =>
-      import('./modules/auth/settings/settings').then((m) => m.SettingsComponent),
-  },
+      import('./shared/main-layout/main-layout').then((m) => m.MainLayout),
+    children: [
+      {
+        path: 'settings',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/auth/settings/settings').then((m) => m.SettingsComponent),
+      },
+      {
+        path: 'listener/feed',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/feed/feed').then((m) => m.Feed),
+      },
+      {
+        path: 'listener/my-profile',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/my-profile/my-profile').then((m) => m.MyProfileComponent),
+      },
 
-  {
-    path: 'listener/feed',
-    //canActivate: [authGuard],
-    loadComponent: () =>
-      import('./modules/listener/feed/feed').then((m) => m.Feed),
+      // alias usado en el sidebar (routerLink="/home") -> apunta al feed del listener
+      { path: 'home', redirectTo: 'listener/feed', pathMatch: 'full' },
+    ],
   },
-  {
-    path: 'listener/my-profile',
-    //canActivate: [authGuard],
-    loadComponent: () =>
-      import('./modules/listener/my-profile/my-profile').then((m) => m.MyProfileComponent),
-  },
-
-  // alias usado en el sidebar (routerLink="/home") -> apunta al feed del listener
-  { path: 'home', redirectTo: 'listener/feed', pathMatch: 'full' },
 
   { path: '**', redirectTo: 'login' },
 ];
