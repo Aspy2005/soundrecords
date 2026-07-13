@@ -60,7 +60,6 @@ export class AlbumDetail implements OnInit, OnDestroy {
 
     this.albumService.getById(spotifyAlbumId).subscribe({
       next: (album) => {
-        console.log('Respuesta de álbum:', album);
         this.album.set(album);
         this.loadingAlbum.set(false);
       },
@@ -76,7 +75,6 @@ export class AlbumDetail implements OnInit, OnDestroy {
 
     this.reviewService.getAlbumReviews(spotifyAlbumId).subscribe({
       next: (res) => {
-        console.log('Respuesta de reseñas:', res);
         this.reviews.set(res.reviews);
         // averageRating puede ser null si no hay reseñas
         this.averageRating.set(res.averageRating ?? null);
