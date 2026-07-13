@@ -51,6 +51,12 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./modules/listener/album-detail/album-detail').then((m) => m.AlbumDetail),
       },
+      {
+        path: 'listener/album/:id/review',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/review-editor/review-editor').then((m) => m.ReviewEditor),
+      },
 
       // alias usado en el sidebar (routerLink="/home") -> apunta al feed del listener
       { path: 'home', redirectTo: 'listener/feed', pathMatch: 'full' },

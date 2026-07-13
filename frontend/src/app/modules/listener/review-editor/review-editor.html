@@ -1,0 +1,86 @@
+<!--
+  VISTA 6 del mockup (MU_1.html) — CU-11 (crear reseña) / CU-12 (editar).
+  Se monta dentro de MainLayout.
+-->
+<div class="topbar">
+  <div class="topbar-row">
+    <h1>{{ isEditMode() ? 'Editar reseña' : 'Escribir reseña' }}</h1>
+  </div>
+</div>
+
+<div class="review-editor-content">
+  <div class="detail-status" *ngIf="loadingAlbum()">Cargando álbum…</div>
+  <div class="detail-status error" *ngIf="!loadingAlbum() && albumError()">{{ albumError() }}</div>
+
+  <ng-container *ngIf="!loadingAlbum() && !albumError() && album() as a">
+    <!-- Álbum seleccionado -->
+    <div class="editor-album-mini">
+      <img *ngIf="a.coverUrl" class="editor-album-art" [src]="a.coverUrl" [alt]="a.name" />
+      <div *ngIf="!a.coverUrl" class="editor-album-art-placeholder">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(143,156,174,0.3)" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </div>
+      <div style="flex: 1">
+        <div class="editor-album-title">{{ a.name }}</div>
+        <div class="editor-album-artist">
+          {{ a.artist }}<ng-container *ngIf="a.releaseYear"> · {{ a.releaseYear }}</ng-container>
+        </div>
+      </div>
+      <a class="btn-ghost" [routerLink]="['/listener/album-search']">Cambiar álbum</a>
+    </div>
+
+    <!-- Selector de estrellas -->
+    <div style="margin-bottom: 22px">
+      <div class="field-label">Tu calificación</div>
+      <div class="star-selector">
+        <div
+          class="star-sel"
+          *ngFor="let n of [1, 2, 3, 4, 5]"
+          [class.active]="n <= rating()"
+          (click)="selectStar(n)"
+        >
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2l3 6.5 7 .8-5.2 4.9 1.4 7-6.2-3.6-6.2 3.6 1.4-7L2 9.3l7-.8z" />
+          </svg>
+        </div>
+      </div>
+      <div class="star-label">{{ starLabel() }}</div>
+    </div>
+
+    <!-- Editor de texto -->
+    <div class="field">
+      <label
+        >Tu reseña
+        <span class="field-hint">(mín. {{ minContent }} · máx. {{ maxContent }} caracteres)</span></label
+      >
+      <textarea
+        class="editor-textarea"
+        placeholder="Escribe tu opinión sobre el álbum…"
+        [ngModel]="content()"
+        (ngModelChange)="onContentInput($event)"
+      ></textarea>
+      <div class="char-count" [class.warn]="charCount() > maxContent">
+        {{ charCount() }} / {{ maxContent }}
+      </div>
+    </div>
+
+    <div class="submit-error" *ngIf="submitError()">{{ submitError() }}</div>
+
+    <!-- Acciones -->
+    <div class="editor-actions">
+      <button class="btn-ghost" type="button" (click)="cancel()">Cancelar</button>
+      <button class="btn-primary" type="button" [disabled]="!canSubmit()" (click)="submit()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M20 6L9 17l-5-5" />
+        </svg>
+        {{ submitting() ? 'Publicando…' : isEditMode() ? 'Guardar cambios' : 'Publicar reseña' }}
+      </button>
+    </div>
+
+    <div class="mission-toast" *ngIf="missionCompleted() as m">
+      🎉 Misión completada: <strong>{{ m.name }}</strong> · +{{ m.pointsEarned }} puntos
+    </div>
+  </ng-container>
+</div>

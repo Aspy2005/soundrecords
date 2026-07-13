@@ -4,6 +4,8 @@
  * rating/reviews propios de la BD.
  */
 
+import { Review } from './review.model';
+
 export interface AlbumSearchResult {
   spotifyAlbumId: string;
   name: string;
@@ -25,7 +27,7 @@ export interface AlbumSearchResult {
    * por Alexis). Se dejan opcionales por si algún día dejan de venir.
    */
   tracklist?: string[] | null;
-  myReview?: unknown | null;
+  myReview?: Review | null;
 }
 
 /**
@@ -49,8 +51,11 @@ export interface AlbumDetail {
   platformReviewsCount?: number | null;
   /**
    * Reseña del usuario actual para este álbum, o null si no ha
-   * reseñado. El contrato no especifica el shape exacto, así que se
-   * deja como unknown hasta que el backend lo confirme.
+   * reseñado. El contrato dice "myReview trae la reseña del usuario
+   * actual si existe, o null" pero no muestra el shape exacto — se
+   * asume que es un Review normal (mismo formato que en el feed).
+   * Ojo: puede venir con menos campos poblados (p. ej. sin `user`,
+   * porque ya sabemos que es el usuario actual).
    */
-  myReview?: unknown | null;
+  myReview?: Review | null;
 }

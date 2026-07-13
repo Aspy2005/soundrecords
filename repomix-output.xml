@@ -381,10 +381,6 @@ describe('jwtInterceptor', () => {
 });
 </file>
 
-<file path="frontend/src/app/core/models/album.model.ts">
-
-</file>
-
 <file path="frontend/src/app/core/models/badge.model.ts">
 
 </file>
@@ -410,15 +406,6 @@ describe('Album', () => {
     expect(service).toBeTruthy();
   });
 });
-</file>
-
-<file path="frontend/src/app/core/services/album.ts">
-import { Injectable } from '@angular/core';
-
-@Injectable({
-  providedIn: 'root',
-})
-export class Album {}
 </file>
 
 <file path="frontend/src/app/core/services/artist.spec.ts">
@@ -998,14 +985,6 @@ const routes: Routes = [];
 export class InteractionRoutingModule {}
 </file>
 
-<file path="frontend/src/app/modules/listener/album-detail/album-detail.html">
-<p>album-detail works!</p>
-</file>
-
-<file path="frontend/src/app/modules/listener/album-detail/album-detail.scss">
-
-</file>
-
 <file path="frontend/src/app/modules/listener/album-detail/album-detail.spec.ts">
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -1031,26 +1010,6 @@ describe('AlbumDetail', () => {
 });
 </file>
 
-<file path="frontend/src/app/modules/listener/album-detail/album-detail.ts">
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-album-detail',
-  imports: [],
-  templateUrl: './album-detail.html',
-  styleUrl: './album-detail.scss',
-})
-export class AlbumDetail {}
-</file>
-
-<file path="frontend/src/app/modules/listener/album-search/album-search.html">
-<p>album-search works!</p>
-</file>
-
-<file path="frontend/src/app/modules/listener/album-search/album-search.scss">
-
-</file>
-
 <file path="frontend/src/app/modules/listener/album-search/album-search.spec.ts">
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
@@ -1074,18 +1033,6 @@ describe('AlbumSearch', () => {
     expect(component).toBeTruthy();
   });
 });
-</file>
-
-<file path="frontend/src/app/modules/listener/album-search/album-search.ts">
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-album-search',
-  imports: [],
-  templateUrl: './album-search.html',
-  styleUrl: './album-search.scss',
-})
-export class AlbumSearch {}
 </file>
 
 <file path="frontend/src/app/modules/listener/collections/collections.html">
@@ -1815,87 +1762,6 @@ Thumbs.db
 }
 </file>
 
-<file path="frontend/angular.json">
-{
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "npm"
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "frontend": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "",
-      "sourceRoot": "src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
-          "options": {
-            "browser": "src/main.ts",
-            "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.scss"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "frontend:build:production"
-            },
-            "development": {
-              "buildTarget": "frontend:build:development"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test"
-        }
-      }
-    }
-  }
-}
-</file>
-
 <file path="frontend/package.json">
 {
   "name": "frontend",
@@ -2081,27 +1947,6 @@ export const authGuard: CanActivateFn = (route, state) => {
   // Redirigir al inicio de sesión si no hay token válido guardado
   router.navigate(['/login']);
   return false;
-};
-</file>
-
-<file path="frontend/src/app/core/interceptors/jwt-interceptor.ts">
-import { HttpInterceptorFn } from '@angular/common/http';
-import { inject } from '@angular/core';
-import { AuthService } from '../services/auth'; // <- antes: '../services/auth.service'
-
-export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
-  const authService = inject(AuthService);
-  const token = authService.getToken();
-
-  if (token && req.url.includes('/api/')) {
-    req = req.clone({
-      setHeaders: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-  }
-
-  return next(req);
 };
 </file>
 
@@ -4076,6 +3921,394 @@ export class SettingsComponent implements OnInit {
 }
 </file>
 
+<file path="frontend/src/app/modules/listener/album-detail/album-detail.scss">
+:host {
+  --bg: #0a1128;
+  --accent: #17d1e8;
+  --accent-2: #9b5de5;
+  --text: #ffffff;
+  --text-secondary: #8f9cae;
+  --card: #131c38;
+  --card-border: rgba(143, 156, 174, 0.14);
+  --accent-glow: rgba(23, 209, 232, 0.25);
+  --danger: #f15f6c;
+  --success: #2ee89a;
+
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+.topbar {
+  padding: 28px 28px 18px;
+}
+.back-link {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13.5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.back-link:hover {
+  color: var(--text);
+}
+
+.album-detail-main {
+  padding: 0 28px 60px;
+}
+
+.detail-status {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  padding: 20px 0;
+}
+.detail-status.error {
+  color: var(--danger);
+}
+
+.album-hero {
+  display: flex;
+  gap: 28px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.album-hero-art {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+.album-hero-art-placeholder {
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #1b2750, #0d1430);
+  flex-shrink: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.album-meta {
+  min-width: 240px;
+}
+.album-meta .eyebrow {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+.album-meta h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.album-meta .artist {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+.album-meta .year-genre {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+.album-rating-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 16px 0;
+}
+.big-rating {
+  font-size: 36px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--accent);
+}
+.rating-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.review-count {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.album-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn-ghost {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  border: 1px solid rgba(23, 209, 232, 0.4);
+  border-radius: 10px;
+  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: rgba(23, 209, 232, 0.07);
+}
+.btn-ghost:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.section-divider {
+  height: 1px;
+  background: var(--card-border);
+  margin: 28px 0;
+}
+.section-title {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.tracklist {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.track-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 8px;
+}
+.track-row:hover {
+  background: rgba(143, 156, 174, 0.06);
+}
+.track-num {
+  width: 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  text-align: right;
+  flex-shrink: 0;
+}
+.track-title {
+  flex: 1;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.reviews-section {
+  margin-top: 28px;
+}
+.reviews-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+.reviews-total {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+</file>
+
+<file path="frontend/src/app/modules/listener/album-search/album-search.scss">
+:host {
+  --bg: #0a1128;
+  --accent: #17d1e8;
+  --accent-2: #9b5de5;
+  --text: #ffffff;
+  --text-secondary: #8f9cae;
+  --card: #131c38;
+  --card-border: rgba(143, 156, 174, 0.14);
+  --accent-glow: rgba(23, 209, 232, 0.25);
+  --danger: #f15f6c;
+  --success: #2ee89a;
+
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+.topbar {
+  padding: 28px 28px 18px;
+}
+.topbar-row h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.search-main {
+  padding: 0 28px 28px;
+}
+
+.search-hero {
+  margin-bottom: 28px;
+}
+.search-hero h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.search-big-wrap {
+  position: relative;
+}
+.search-big-wrap input {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 16px 20px 16px 50px;
+  font-size: 15px;
+  color: var(--text);
+  font-family: inherit;
+}
+.search-big-wrap input::placeholder {
+  color: var(--text-secondary);
+}
+.search-big-wrap input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-glow);
+}
+.search-big-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 19px;
+  height: 19px;
+  color: var(--text-secondary);
+}
+
+.search-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.filter-chip {
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(143, 156, 174, 0.08);
+  border: 1px solid var(--card-border);
+  cursor: pointer;
+}
+.filter-chip.active {
+  background: rgba(23, 209, 232, 0.1);
+  color: var(--accent);
+  border-color: rgba(23, 209, 232, 0.4);
+}
+
+.results-meta {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+.search-status {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  padding: 20px 0;
+}
+.search-status.error {
+  color: var(--danger);
+}
+
+.results-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.result-row {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.result-row:hover {
+  border-color: rgba(23, 209, 232, 0.35);
+}
+.result-art {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.result-art-placeholder {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1b2750, #0d1430);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.result-info {
+  flex: 1;
+  min-width: 0;
+}
+.result-title {
+  font-size: 14px;
+  font-weight: 700;
+}
+.result-sub {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.result-rating {
+  font-size: 12.5px;
+  color: var(--accent);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+.empty-state svg {
+  width: 48px;
+  height: 48px;
+  color: var(--text-secondary);
+  margin: 0 auto 16px;
+}
+.empty-state h3 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.empty-state p {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+}
+</file>
+
 <file path="frontend/src/app/modules/listener/feed/feed.html">
 <!--
   Esta plantilla es SOLO el contenido "main" + rail de la vista Feed/Inicio
@@ -5071,104 +5304,6 @@ export class MyProfileComponent implements OnInit {
 }
 </file>
 
-<file path="frontend/src/app/shared/navbar/navbar.html">
-<!--
-  Sidebar global de la app (VISTA 1 del mockup MU_1.html).
-  Se monta una sola vez dentro de app-main-layout, junto al <router-outlet>
-  de las vistas protegidas (feed, my-profile, settings, etc.).
--->
-<aside class="sidebar">
-  <div class="logo" routerLink="/listener/feed">
-    <div class="logo-mark"></div>
-    <div class="logo-text">SOUND<span>RECORDS</span></div>
-  </div>
-
-  <nav>
-    <div class="nav-group">
-      <a class="nav-item" routerLink="/listener/feed" routerLinkActive="active">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
-        </svg>
-        Inicio
-      </a>
-
-      <a class="nav-item is-disabled" title="Próximamente">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="7" />
-          <path d="M21 21l-4.3-4.3" />
-        </svg>
-        Buscar álbumes
-      </a>
-
-      <a class="nav-item is-disabled" title="Próximamente">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 11l18-7-7 18-2-8-9-3z" />
-        </svg>
-        Explorar
-      </a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-label">Tu cuenta</div>
-
-      <a class="nav-item" routerLink="/listener/my-profile" routerLinkActive="active">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="8" r="4" />
-          <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
-        </svg>
-        Mi perfil
-      </a>
-
-      <a class="nav-item is-disabled" title="Próximamente">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="4" width="7" height="7" rx="1.5" />
-          <rect x="14" y="4" width="7" height="7" rx="1.5" />
-          <rect x="3" y="15" width="7" height="6" rx="1.5" />
-          <rect x="14" y="15" width="7" height="6" rx="1.5" />
-        </svg>
-        Mis listas
-      </a>
-    </div>
-
-    <div class="nav-group">
-      <div class="nav-label">Comunidad</div>
-
-      <a class="nav-item is-disabled" title="Próximamente">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 2l2.7 6.6L22 9l-5 4.6L18.5 22 12 17.8 5.5 22 7 13.6 2 9l7.3-.4z" />
-        </svg>
-        Misiones
-      </a>
-
-      <a class="nav-item is-disabled" title="Próximamente">
-        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="12" cy="12" r="9" />
-          <circle cx="12" cy="12" r="2.4" />
-        </svg>
-        Artistas emergentes
-      </a>
-    </div>
-  </nav>
-
-  <div class="sidebar-bottom" *ngIf="user$ | async as user">
-    <a class="user-chip" routerLink="/settings" title="Ir a configuración">
-      <div class="avatar-sm" [style.background-image]="user.photoUrl ? 'url(' + user.photoUrl + ')' : null"></div>
-      <div>
-        <div class="uname">{{ user.username }}</div>
-        <div class="ulevel">Nivel {{ user.level }} · {{ user.points | number }} pts</div>
-      </div>
-    </a>
-    <button class="logout-btn" type="button" title="Cerrar sesión" (click)="logout()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
-        <path d="M16 17l5-5-5-5" />
-        <path d="M21 12H9" />
-      </svg>
-    </button>
-  </div>
-</aside>
-</file>
-
 <file path="frontend/src/app/shared/navbar/navbar.scss">
 :host {
   --bg: #0a1128;
@@ -5700,124 +5835,6 @@ export class Navbar {
 }
 </file>
 
-<file path="frontend/src/app/shared/review-card/review-card.ts">
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StarRating } from '../star-rating/star-rating';
-import { Review, ReportReason } from '../../core/models/review.model';
-import { ReviewService } from '../../core/services/review';
-import { UserService } from '../../core/services/user';
-
-interface ReportReasonOption {
-  value: ReportReason;
-  label: string;
-}
-
-const REPORT_REASONS: ReportReasonOption[] = [
-  { value: 'SPAM', label: 'Spam' },
-  { value: 'OFFENSIVE_LANGUAGE', label: 'Lenguaje ofensivo' },
-  { value: 'FALSE_CONTENT', label: 'Contenido falso' },
-  { value: 'HARASSMENT', label: 'Acoso' },
-  { value: 'OTHER', label: 'Otro' },
-];
-
-@Component({
-  selector: 'app-review-card',
-  standalone: true,
-  imports: [CommonModule, StarRating],
-  templateUrl: './review-card.html',
-  styleUrl: './review-card.scss',
-})
-export class ReviewCard {
-  @Input({ required: true }) review!: Review;
-
-  reportReasons = REPORT_REASONS;
-  showReportMenu = false;
-  reportSent = false;
-  likeInFlight = false;
-  followInFlight = false;
-
-  constructor(
-    private reviewService: ReviewService,
-    private userService: UserService,
-  ) {}
-
-  get isFollowing(): boolean {
-    // Ver nota en review.model.ts: si el backend no manda isFollowedByMe,
-    // se asume que sí lo sigues (el feed "Siguiendo" debería ser justo eso).
-    return this.review.user?.isFollowedByMe !== false;
-  }
-
-  get timeAgo(): string {
-    const diffMs = Date.now() - new Date(this.review.createdAt).getTime();
-    const minutes = Math.floor(diffMs / 60000);
-    if (minutes < 1) return 'justo ahora';
-    if (minutes < 60) return `hace ${minutes} min`;
-    const hours = Math.floor(minutes / 60);
-    if (hours < 24) return `hace ${hours} h`;
-    const days = Math.floor(hours / 24);
-    return `hace ${days} d`;
-  }
-
-  toggleLike(): void {
-    if (this.likeInFlight) return;
-    this.likeInFlight = true;
-    this.reviewService.toggleLike(this.review.id).subscribe({
-      next: (res) => {
-        this.review.likedByMe = res.liked;
-        this.review.likesCount = res.likesCount;
-        this.likeInFlight = false;
-      },
-      error: () => (this.likeInFlight = false),
-    });
-  }
-
-  toggleFollow(): void {
-    if (this.followInFlight || !this.review.user?.id) return;
-    this.followInFlight = true;
-    const action$ = this.isFollowing
-      ? this.userService.unfollow(this.review.user.id)
-      : this.userService.follow(this.review.user.id);
-
-    action$.subscribe({
-      next: (res) => {
-        this.review.user.isFollowedByMe = res.following;
-        this.followInFlight = false;
-      },
-      error: () => (this.followInFlight = false),
-    });
-  }
-
-  toggleReportMenu(): void {
-    if (this.reportSent) return;
-    this.showReportMenu = !this.showReportMenu;
-  }
-
-  sendReport(reason: ReportReason): void {
-    this.showReportMenu = false;
-    this.reviewService.report(this.review.id, reason).subscribe({
-      next: () => (this.reportSent = true),
-      // Si ya la había reportado antes (409) igual la marcamos como enviada
-      // en la UI para no dejar el botón dando vueltas.
-      error: () => (this.reportSent = true),
-    });
-  }
-
-  goToAlbum(): void {
-    if (!this.review.spotifyAlbumId) {
-      // El contrato v1.0 no incluye spotifyAlbumId en /api/reviews/feed,
-      // así que todavía no hay forma de armar el link al detalle del álbum.
-      console.warn(
-        '[ReviewCard] Falta spotifyAlbumId en esta reseña; pedir a backend que lo agregue al feed.',
-      );
-      return;
-    }
-    // TODO: navegar cuando exista la ruta de detalle de álbum registrada
-    // en app.routes.ts (el componente AlbumDetail todavía es un stub).
-  }
-}
-</file>
-
 <file path="frontend/src/app/shared/star-rating/star-rating.html">
 <div class="stars">
   <svg
@@ -5988,6 +6005,825 @@ button {
 }
 </file>
 
+<file path="frontend/angular.json">
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "cli": {
+    "packageManager": "npm",
+    "analytics": false
+  },
+  "newProjectRoot": "projects",
+  "projects": {
+    "frontend": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "src/main.ts",
+            "tsConfig": "tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public"
+              }
+            ],
+            "styles": [
+              "src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "frontend:build:production"
+            },
+            "development": {
+              "buildTarget": "frontend:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test"
+        }
+      }
+    }
+  }
+}
+</file>
+
+<file path="frontend/src/app/core/interceptors/jwt-interceptor.ts">
+import { HttpInterceptorFn } from '@angular/common/http';
+
+export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
+  // Ajusta 'token' al nombre exacto de la llave donde guardas tu JWT
+  const token = localStorage.getItem('sr_token'); 
+  
+  console.log('--- INTERCEPTOR EJECUTÁNDOSE ---');
+  console.log('URL de la petición:', req.url);
+  console.log('Token encontrado en el navegador:', token);
+
+  if (token && req.url.includes('/api/')) {
+    console.log('¡Condición cumplida! Adjuntando token...');
+    req = req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } else {
+    console.log('No se adjuntó el token. ¿Falta el token o la URL no incluye /api/?');
+  }
+
+  return next(req);
+};
+</file>
+
+<file path="frontend/src/app/core/models/album.model.ts">
+/**
+ * Coincide con las respuestas de SpotifyController (/api/spotify) del
+ * API Contract v1.0. El backend combina la ficha de Spotify con el
+ * rating/reviews propios de la BD.
+ */
+
+export interface AlbumSearchResult {
+  spotifyAlbumId: string;
+  name: string;
+  artist: string;
+  coverUrl?: string;
+  /**
+   * ⚠️ El contrato lo documenta como number, pero el backend real de
+   * Alexis lo está devolviendo como string (ver payload de ejemplo:
+   * "releaseYear": "1982"). Se deja como string | number para no
+   * romper si lo corrigen más adelante.
+   */
+  releaseYear?: string | number;
+  platformRating?: number | null;
+  platformReviewsCount?: number | null;
+  /**
+   * Estos dos campos no están en la sección de "Response 200" de
+   * /api/spotify/search del contrato v1.0, pero el backend real ya los
+   * está mandando en cada resultado (ver payload de ejemplo compartido
+   * por Alexis). Se dejan opcionales por si algún día dejan de venir.
+   */
+  tracklist?: string[] | null;
+  myReview?: unknown | null;
+}
+
+/**
+ * ⚠️ DESVIACIÓN DEL CONTRATO v1.0: el contrato documenta la respuesta de
+ * GET /api/spotify/search como { "results": [...] }, pero el backend
+ * real de Alexis devuelve un ResponseEntity<List<AlbumResponse>>, es
+ * decir un array plano. Por eso el service ya NO usa un wrapper tipo
+ * AlbumSearchResponse; search() retorna AlbumSearchResult[] directo.
+ * Si el backend llega a "corregirse" para envolver en results, hay que
+ * revertir este cambio en album.ts.
+ */
+
+export interface AlbumDetail {
+  spotifyAlbumId: string;
+  name: string;
+  artist: string;
+  coverUrl?: string;
+  releaseYear?: string | number;
+  tracklist?: string[] | null;
+  platformRating?: number | null;
+  platformReviewsCount?: number | null;
+  /**
+   * Reseña del usuario actual para este álbum, o null si no ha
+   * reseñado. El contrato no especifica el shape exacto, así que se
+   * deja como unknown hasta que el backend lo confirme.
+   */
+  myReview?: unknown | null;
+}
+</file>
+
+<file path="frontend/src/app/core/services/album.ts">
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { timeout } from 'rxjs/operators';
+import { AlbumDetail, AlbumSearchResult } from '../models/album.model';
+
+/**
+ * Todas las rutas requieren JWT (según el contrato), el token se agrega
+ * automáticamente por jwtInterceptor a cualquier request cuya URL
+ * contenga "/api/".
+ */
+@Injectable({
+  providedIn: 'root',
+})
+export class AlbumService {
+  private baseUrl = 'http://localhost:8080/api/spotify';
+
+  // Spotify puede tardar o el 503 del contrato puede colgarse; sin esto
+  // el loading se queda pegado para siempre si el backend no responde.
+  private readonly REQUEST_TIMEOUT_MS = 8000;
+
+  constructor(private http: HttpClient) {}
+
+  // GET /api/spotify/search?q={query}&genre={genre}&year={year}
+  // ⚠️ El backend real devuelve un array plano (List<AlbumResponse>),
+  // no { results: [...] } como dice el contrato v1.0. Ver nota en
+  // album.model.ts.
+  search(query: string, genre?: string, year?: string): Observable<AlbumSearchResult[]> {
+    let params = new HttpParams().set('q', query);
+    if (genre) params = params.set('genre', genre);
+    if (year) params = params.set('year', year);
+
+    return this.http
+      .get<AlbumSearchResult[]>(`${this.baseUrl}/search`, { params })
+      .pipe(timeout(this.REQUEST_TIMEOUT_MS));
+  }
+
+  // GET /api/spotify/albums/{spotifyAlbumId}
+  getById(spotifyAlbumId: string): Observable<AlbumDetail> {
+    return this.http
+      .get<AlbumDetail>(`${this.baseUrl}/albums/${spotifyAlbumId}`)
+      .pipe(timeout(this.REQUEST_TIMEOUT_MS));
+  }
+}
+</file>
+
+<file path="frontend/src/app/modules/listener/album-detail/album-detail.html">
+<!--
+  VISTA 5 del mockup (MU_1.html). Se monta dentro de MainLayout.
+-->
+<div class="topbar">
+  <div class="topbar-row">
+    <a class="back-link" routerLink="/listener/album-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+      Buscar
+    </a>
+  </div>
+</div>
+
+<div class="album-detail-main">
+  <div class="detail-status" *ngIf="loadingAlbum()">Cargando álbum…</div>
+  <div class="detail-status error" *ngIf="!loadingAlbum() && albumError()">{{ albumError() }}</div>
+
+  <ng-container *ngIf="!loadingAlbum() && !albumError() && album() as a">
+    <div class="album-hero">
+      <img *ngIf="a.coverUrl" class="album-hero-art" [src]="a.coverUrl" [alt]="a.name" />
+      <div *ngIf="!a.coverUrl" class="album-hero-art-placeholder">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="rgba(143,156,174,0.3)" stroke-width="1.2">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </div>
+      <div class="album-meta">
+        <div class="eyebrow">ÁLBUM</div>
+        <h2>{{ a.name }}</h2>
+        <div class="artist">{{ a.artist }}</div>
+        <div class="year-genre">
+          <ng-container *ngIf="a.releaseYear">{{ a.releaseYear }}</ng-container>
+          <ng-container *ngIf="tracklist.length"> · {{ tracklist.length }} pistas</ng-container>
+        </div>
+
+        <div class="album-rating-row" *ngIf="a.platformRating != null">
+          <div class="big-rating">{{ formattedRating }}</div>
+          <div class="rating-detail">
+            <app-star-rating [rating]="a.platformRating ?? 0"></app-star-rating>
+            <div class="review-count">
+              {{ a.platformReviewsCount ?? totalReviews() }} reseñas en la plataforma
+            </div>
+          </div>
+        </div>
+        <div class="album-rating-row" *ngIf="a.platformRating == null">
+          <div class="review-count">Todavía no tiene reseñas en la plataforma. ¡Sé el primero!</div>
+        </div>
+
+        <div class="album-actions">
+          <button class="btn-ghost" disabled title="Próximamente">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 012-2h10a2 2 0 012 2z" />
+            </svg>
+            Guardar en lista
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <ng-container *ngIf="tracklist.length">
+      <div class="section-divider"></div>
+      <div class="section-title">Tracklist</div>
+      <div class="tracklist">
+        <div class="track-row" *ngFor="let track of tracklist; let i = index">
+          <span class="track-num">{{ i + 1 }}</span>
+          <span class="track-title">{{ track }}</span>
+        </div>
+      </div>
+    </ng-container>
+
+    <div class="section-divider"></div>
+    <div class="reviews-section">
+      <div class="reviews-header">
+        <div class="section-title" style="margin:0;">Reseñas de la comunidad</div>
+        <span class="reviews-total" *ngIf="!loadingReviews()">{{ totalReviews() }} en total</span>
+      </div>
+
+      <div class="detail-status" *ngIf="loadingReviews()">Cargando reseñas…</div>
+      <div class="detail-status" *ngIf="!loadingReviews() && reviews().length === 0">
+        Aún no hay reseñas para este álbum. Sé el primero en reseñarlo.
+      </div>
+
+      <div class="reviews-list" *ngIf="!loadingReviews() && reviews().length > 0">
+        <app-review-card *ngFor="let review of reviews()" [review]="review"></app-review-card>
+      </div>
+    </div>
+  </ng-container>
+</div>
+</file>
+
+<file path="frontend/src/app/modules/listener/album-detail/album-detail.ts">
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute, RouterModule } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AlbumService } from '../../../core/services/album';
+import { ReviewService } from '../../../core/services/review';
+import { AlbumDetail as AlbumDetailModel } from '../../../core/models/album.model';
+import { Review } from '../../../core/models/review.model';
+import { ReviewCard } from '../../../shared/review-card/review-card';
+import { StarRating } from '../../../shared/star-rating/star-rating';
+
+@Component({
+  selector: 'app-album-detail',
+  standalone: true,
+  imports: [CommonModule, RouterModule, ReviewCard, StarRating],
+  templateUrl: './album-detail.html',
+  styleUrl: './album-detail.scss',
+})
+export class AlbumDetail implements OnInit, OnDestroy {
+  // ⚠️ Angular zoneless (no hay zone.js en package.json): mutar
+  // propiedades planas dentro de un .subscribe() no dispara render.
+  // Todo el estado que se lee en el template va en signals.
+  album = signal<AlbumDetailModel | null>(null);
+  reviews = signal<Review[]>([]);
+  averageRating = signal(0);
+  totalReviews = signal(0);
+
+  loadingAlbum = signal(true);
+  loadingReviews = signal(true);
+  albumError = signal<string | null>(null);
+
+  private paramsSub?: Subscription;
+
+  constructor(
+    private route: ActivatedRoute,
+    private albumService: AlbumService,
+    private reviewService: ReviewService,
+  ) {}
+
+  ngOnInit(): void {
+    // paramMap por si algún día se navega de un álbum a otro sin
+    // recrear el componente (p. ej. desde tracklist de otra vista).
+    this.paramsSub = this.route.paramMap.subscribe((params) => {
+      const id = params.get('id');
+      if (id) this.loadAlbum(id);
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSub?.unsubscribe();
+  }
+
+  private loadAlbum(spotifyAlbumId: string): void {
+    this.loadingAlbum.set(true);
+    this.loadingReviews.set(true);
+    this.albumError.set(null);
+    this.album.set(null);
+    this.reviews.set([]);
+
+    this.albumService.getById(spotifyAlbumId).subscribe({
+      next: (album) => {
+        this.album.set(album);
+        this.loadingAlbum.set(false);
+      },
+      error: (err) => {
+        this.albumError.set(
+          err?.name === 'TimeoutError'
+            ? 'La carga está tardando demasiado. Intenta de nuevo.'
+            : 'No pudimos cargar este álbum. Puede que ya no exista en Spotify.',
+        );
+        this.loadingAlbum.set(false);
+      },
+    });
+
+    this.reviewService.getAlbumReviews(spotifyAlbumId).subscribe({
+      next: (res) => {
+        this.reviews.set(res.reviews);
+        this.averageRating.set(res.averageRating);
+        this.totalReviews.set(res.totalReviews);
+        this.loadingReviews.set(false);
+      },
+      error: () => {
+        // Si esto falla igual mostramos el álbum; simplemente la
+        // sección de reseñas queda vacía. (Nota: este endpoint hoy
+        // está devolviendo 403 en el backend, hay que revisar el
+        // SecurityConfig de /api/reviews/album/** con Alexis.)
+        this.loadingReviews.set(false);
+      },
+    });
+  }
+
+  get tracklist(): string[] {
+    return this.album()?.tracklist ?? [];
+  }
+
+  get formattedRating(): string {
+    const rating = this.album()?.platformRating ?? this.averageRating();
+    return rating ? rating.toFixed(1) : '—';
+  }
+}
+</file>
+
+<file path="frontend/src/app/modules/listener/album-search/album-search.html">
+<!--
+  VISTA 4 del mockup (MU_1.html). Se monta dentro de MainLayout, así que
+  aquí solo va el contenido "main" (la sidebar ya la pone app-sidebar).
+-->
+<div class="topbar">
+  <div class="topbar-row">
+    <h1>Buscar álbumes</h1>
+  </div>
+</div>
+
+<div class="search-main">
+  <div class="search-hero">
+    <h2>¿Qué quieres reseñar hoy?</h2>
+    <div class="search-big-wrap">
+      <svg class="search-big-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7" />
+        <path d="M21 21l-4.3-4.3" />
+      </svg>
+      <input
+        type="text"
+        placeholder="Nombre del álbum, artista o género…"
+        [ngModel]="query()"
+        (ngModelChange)="onQueryInput($event)"
+      />
+    </div>
+  </div>
+
+  <div class="search-filters">
+    <div class="filter-chip" [class.active]="activeFilter() === 'all'" (click)="selectFilter('all')">Todos</div>
+    <div class="filter-chip" [class.active]="activeFilter() === '2020s'" (click)="selectFilter('2020s')">2020+</div>
+  </div>
+
+  <div class="results-meta" *ngIf="searched() && !loading() && !errorMessage()">
+    {{ results().length }} resultado{{ results().length === 1 ? '' : 's' }} vía Spotify API
+  </div>
+
+  <div class="search-status" *ngIf="loading()">Buscando…</div>
+  <div class="search-status error" *ngIf="!loading() && errorMessage()">{{ errorMessage() }}</div>
+
+  <div class="empty-state" *ngIf="!loading() && !errorMessage() && searched() && results().length === 0">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.3-4.3" />
+    </svg>
+    <h3>Sin resultados</h3>
+    <p>No encontramos álbumes para "{{ query() }}". Prueba con otro nombre o artista.</p>
+  </div>
+
+  <div class="empty-state" *ngIf="!loading() && !errorMessage() && !searched()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.3-4.3" />
+    </svg>
+    <h3>Empieza a escribir</h3>
+    <p>Busca por nombre de álbum, artista o género para ver resultados.</p>
+  </div>
+
+  <div class="results-grid" *ngIf="!loading() && !errorMessage() && results().length > 0">
+    <div class="result-row" *ngFor="let album of results()" (click)="goToAlbum(album)">
+      <img
+        *ngIf="album.coverUrl"
+        class="result-art"
+        [src]="album.coverUrl"
+        [alt]="album.name"
+      />
+      <div *ngIf="!album.coverUrl" class="result-art-placeholder">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(143,156,174,0.3)" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10" />
+          <circle cx="12" cy="12" r="3" />
+        </svg>
+      </div>
+      <div class="result-info">
+        <div class="result-title">{{ album.name }}</div>
+        <div class="result-sub">{{ album.artist }}<ng-container *ngIf="album.releaseYear"> · {{ album.releaseYear }}</ng-container></div>
+      </div>
+      <div class="result-rating">{{ formatRating(album) }}</div>
+    </div>
+  </div>
+</div>
+</file>
+
+<file path="frontend/src/app/shared/navbar/navbar.html">
+<!--
+  Sidebar global de la app (VISTA 1 del mockup MU_1.html).
+  Se monta una sola vez dentro de app-main-layout, junto al <router-outlet>
+  de las vistas protegidas (feed, my-profile, settings, etc.).
+-->
+<aside class="sidebar">
+  <div class="logo" routerLink="/listener/feed">
+    <div class="logo-mark"></div>
+    <div class="logo-text">SOUND<span>RECORDS</span></div>
+  </div>
+
+  <nav>
+    <div class="nav-group">
+      <a class="nav-item" routerLink="/listener/feed" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+        </svg>
+        Inicio
+      </a>
+
+      <a class="nav-item" routerLink="/listener/album-search" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7" />
+          <path d="M21 21l-4.3-4.3" />
+        </svg>
+        Buscar álbumes
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 11l18-7-7 18-2-8-9-3z" />
+        </svg>
+        Explorar
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Tu cuenta</div>
+
+      <a class="nav-item" routerLink="/listener/my-profile" routerLinkActive="active">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7" />
+        </svg>
+        Mi perfil
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="3" y="4" width="7" height="7" rx="1.5" />
+          <rect x="14" y="4" width="7" height="7" rx="1.5" />
+          <rect x="3" y="15" width="7" height="6" rx="1.5" />
+          <rect x="14" y="15" width="7" height="6" rx="1.5" />
+        </svg>
+        Mis listas
+      </a>
+    </div>
+
+    <div class="nav-group">
+      <div class="nav-label">Comunidad</div>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 2l2.7 6.6L22 9l-5 4.6L18.5 22 12 17.8 5.5 22 7 13.6 2 9l7.3-.4z" />
+        </svg>
+        Misiones
+      </a>
+
+      <a class="nav-item is-disabled" title="Próximamente">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="9" />
+          <circle cx="12" cy="12" r="2.4" />
+        </svg>
+        Artistas emergentes
+      </a>
+    </div>
+  </nav>
+
+  <div class="sidebar-bottom" *ngIf="user$ | async as user">
+    <a class="user-chip" routerLink="/settings" title="Ir a configuración">
+      <div class="avatar-sm" [style.background-image]="user.photoUrl ? 'url(' + user.photoUrl + ')' : null"></div>
+      <div>
+        <div class="uname">{{ user.username }}</div>
+        <div class="ulevel">Nivel {{ user.level }} · {{ user.points | number }} pts</div>
+      </div>
+    </a>
+    <button class="logout-btn" type="button" title="Cerrar sesión" (click)="logout()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+        <path d="M16 17l5-5-5-5" />
+        <path d="M21 12H9" />
+      </svg>
+    </button>
+  </div>
+</aside>
+</file>
+
+<file path="frontend/src/app/shared/review-card/review-card.ts">
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { StarRating } from '../star-rating/star-rating';
+import { Review, ReportReason } from '../../core/models/review.model';
+import { ReviewService } from '../../core/services/review';
+import { UserService } from '../../core/services/user';
+
+interface ReportReasonOption {
+  value: ReportReason;
+  label: string;
+}
+
+const REPORT_REASONS: ReportReasonOption[] = [
+  { value: 'SPAM', label: 'Spam' },
+  { value: 'OFFENSIVE_LANGUAGE', label: 'Lenguaje ofensivo' },
+  { value: 'FALSE_CONTENT', label: 'Contenido falso' },
+  { value: 'HARASSMENT', label: 'Acoso' },
+  { value: 'OTHER', label: 'Otro' },
+];
+
+@Component({
+  selector: 'app-review-card',
+  standalone: true,
+  imports: [CommonModule, StarRating],
+  templateUrl: './review-card.html',
+  styleUrl: './review-card.scss',
+})
+export class ReviewCard {
+  @Input({ required: true }) review!: Review;
+
+  reportReasons = REPORT_REASONS;
+  showReportMenu = false;
+  reportSent = false;
+  likeInFlight = false;
+  followInFlight = false;
+
+  constructor(
+    private reviewService: ReviewService,
+    private userService: UserService,
+    private router: Router,
+  ) {}
+
+  get isFollowing(): boolean {
+    // Ver nota en review.model.ts: si el backend no manda isFollowedByMe,
+    // se asume que sí lo sigues (el feed "Siguiendo" debería ser justo eso).
+    return this.review.user?.isFollowedByMe !== false;
+  }
+
+  get timeAgo(): string {
+    const diffMs = Date.now() - new Date(this.review.createdAt).getTime();
+    const minutes = Math.floor(diffMs / 60000);
+    if (minutes < 1) return 'justo ahora';
+    if (minutes < 60) return `hace ${minutes} min`;
+    const hours = Math.floor(minutes / 60);
+    if (hours < 24) return `hace ${hours} h`;
+    const days = Math.floor(hours / 24);
+    return `hace ${days} d`;
+  }
+
+  toggleLike(): void {
+    if (this.likeInFlight) return;
+    this.likeInFlight = true;
+    this.reviewService.toggleLike(this.review.id).subscribe({
+      next: (res) => {
+        this.review.likedByMe = res.liked;
+        this.review.likesCount = res.likesCount;
+        this.likeInFlight = false;
+      },
+      error: () => (this.likeInFlight = false),
+    });
+  }
+
+  toggleFollow(): void {
+    if (this.followInFlight || !this.review.user?.id) return;
+    this.followInFlight = true;
+    const action$ = this.isFollowing
+      ? this.userService.unfollow(this.review.user.id)
+      : this.userService.follow(this.review.user.id);
+
+    action$.subscribe({
+      next: (res) => {
+        this.review.user.isFollowedByMe = res.following;
+        this.followInFlight = false;
+      },
+      error: () => (this.followInFlight = false),
+    });
+  }
+
+  toggleReportMenu(): void {
+    if (this.reportSent) return;
+    this.showReportMenu = !this.showReportMenu;
+  }
+
+  sendReport(reason: ReportReason): void {
+    this.showReportMenu = false;
+    this.reviewService.report(this.review.id, reason).subscribe({
+      next: () => (this.reportSent = true),
+      // Si ya la había reportado antes (409) igual la marcamos como enviada
+      // en la UI para no dejar el botón dando vueltas.
+      error: () => (this.reportSent = true),
+    });
+  }
+
+  goToAlbum(): void {
+    if (!this.review.spotifyAlbumId) {
+      // El contrato v1.0 no incluye spotifyAlbumId en /api/reviews/feed,
+      // así que todavía no hay forma de armar el link al detalle del álbum.
+      console.warn(
+        '[ReviewCard] Falta spotifyAlbumId en esta reseña; pedir a backend que lo agregue al feed.',
+      );
+      return;
+    }
+    this.router.navigate(['/listener/album', this.review.spotifyAlbumId]);
+  }
+}
+</file>
+
+<file path="frontend/src/app/modules/listener/album-search/album-search.ts">
+import { Component, OnDestroy, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Router, RouterModule } from '@angular/router';
+import { of, Subject } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { AlbumService } from '../../../core/services/album';
+import { AlbumSearchResult } from '../../../core/models/album.model';
+
+type FilterChip = 'all' | '2020s';
+
+@Component({
+  selector: 'app-album-search',
+  standalone: true,
+  imports: [CommonModule, FormsModule, RouterModule],
+  templateUrl: './album-search.html',
+  styleUrl: './album-search.scss',
+})
+export class AlbumSearch implements OnInit, OnDestroy {
+  // ⚠️ Este proyecto corre Angular en modo zoneless (no hay zone.js en
+  // package.json). Mutar propiedades planas dentro de un .subscribe()
+  // no dispara change detection ahí — solo signals (o el async pipe)
+  // le avisan al framework que hay que repintar. Por eso todo el
+  // estado reactivo de este componente va en signals.
+  query = signal('');
+  results = signal<AlbumSearchResult[]>([]);
+  loading = signal(false);
+  searched = signal(false);
+  errorMessage = signal<string | null>(null);
+  activeFilter = signal<FilterChip>('all');
+
+  private queryChanged = new Subject<string>();
+
+  constructor(
+    private albumService: AlbumService,
+    private router: Router,
+  ) {}
+
+  ngOnInit(): void {
+    this.queryChanged
+      .pipe(
+        debounceTime(400),
+        distinctUntilChanged(),
+        switchMap((q) => {
+          const trimmed = q.trim();
+          if (!trimmed) {
+            this.loading.set(false);
+            this.searched.set(false);
+            this.results.set([]);
+            // No golpeamos el backend con q="": cortamos con null y lo
+            // filtramos en el subscribe de abajo.
+            return of(null);
+          }
+          this.loading.set(true);
+          this.errorMessage.set(null);
+          const year = this.activeFilter() === '2020s' ? '2020' : undefined;
+
+          return this.albumService.search(trimmed, undefined, year).pipe(
+            // catchError DENTRO del switchMap: si se propaga hasta el
+            // subscribe de abajo, mata toda la suscripción al Subject
+            // y ninguna búsqueda posterior vuelve a disparar.
+            catchError((err) => {
+              this.errorMessage.set(
+                err?.name === 'TimeoutError'
+                  ? 'La búsqueda está tardando demasiado. Intenta de nuevo.'
+                  : 'No pudimos completar la búsqueda. Intenta de nuevo.',
+              );
+              this.loading.set(false);
+              return of(null);
+            }),
+          );
+        }),
+      )
+      .subscribe((res) => {
+        if (!res) return; // caso q="" o error, ya manejados arriba
+        this.searched.set(true);
+        // El backend real devuelve un array plano (List<AlbumResponse>),
+        // no { results: [...] } como documenta el contrato v1.0.
+        this.results.set(res ?? []);
+        this.loading.set(false);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.queryChanged.complete();
+  }
+
+  onQueryInput(value: string): void {
+    this.query.set(value);
+    this.queryChanged.next(value);
+  }
+
+  selectFilter(filter: FilterChip): void {
+    this.activeFilter.set(filter);
+    // Reaplicamos la búsqueda actual con el filtro nuevo (si hay texto).
+    if (this.query().trim()) {
+      this.queryChanged.next(this.query());
+    }
+  }
+
+  goToAlbum(album: AlbumSearchResult): void {
+    this.router.navigate(['/listener/album', album.spotifyAlbumId]);
+  }
+
+  formatRating(album: AlbumSearchResult): string {
+    return album.platformRating != null ? `★ ${album.platformRating.toFixed(1)}` : 'Sin reseñas';
+  }
+}
+</file>
+
 <file path="frontend/src/app/app.routes.ts">
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth-guard';
@@ -6029,6 +6865,18 @@ export const routes: Routes = [
         //canActivate: [authGuard],
         loadComponent: () =>
           import('./modules/listener/my-profile/my-profile').then((m) => m.MyProfileComponent),
+      },
+      {
+        path: 'listener/album-search',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/album-search/album-search').then((m) => m.AlbumSearch),
+      },
+      {
+        path: 'listener/album/:id',
+        //canActivate: [authGuard],
+        loadComponent: () =>
+          import('./modules/listener/album-detail/album-detail').then((m) => m.AlbumDetail),
       },
 
       // alias usado en el sidebar (routerLink="/home") -> apunta al feed del listener

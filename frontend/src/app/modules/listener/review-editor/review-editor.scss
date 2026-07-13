@@ -1,0 +1,220 @@
+:host {
+  --bg: #0a1128;
+  --accent: #17d1e8;
+  --accent-2: #9b5de5;
+  --text: #ffffff;
+  --text-secondary: #8f9cae;
+  --card: #131c38;
+  --card-border: rgba(143, 156, 174, 0.14);
+  --accent-glow: rgba(23, 209, 232, 0.25);
+  --danger: #f15f6c;
+  --success: #2ee89a;
+
+  display: block;
+  font-family: 'Inter', sans-serif;
+  color: var(--text);
+}
+
+.topbar {
+  padding: 28px 28px 18px;
+}
+.topbar-row h1 {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.review-editor-content {
+  padding: 0 28px 60px;
+  max-width: 560px;
+}
+
+.detail-status {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  padding: 20px 0;
+}
+.detail-status.error {
+  color: var(--danger);
+}
+
+.editor-album-mini {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 22px;
+}
+.editor-album-art {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.editor-album-art-placeholder {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1b2750, #0d1430);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.editor-album-title {
+  font-size: 15px;
+  font-weight: 700;
+}
+.editor-album-artist {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.star-selector {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.star-sel {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.star-sel:hover {
+  transform: scale(1.15);
+}
+.star-sel svg {
+  width: 28px;
+  height: 28px;
+  fill: rgba(143, 156, 174, 0.3);
+  color: rgba(143, 156, 174, 0.3);
+}
+.star-sel.active svg {
+  fill: var(--accent);
+  color: var(--accent);
+}
+.star-label {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.field {
+  margin-bottom: 8px;
+}
+.field label {
+  font-size: 13px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+.field-hint {
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+.editor-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 13.5px;
+  color: var(--text);
+  font-family: inherit;
+  resize: none;
+  height: 130px;
+  line-height: 1.55;
+}
+.editor-textarea::placeholder {
+  color: var(--text-secondary);
+}
+.editor-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+.char-count {
+  font-size: 11.5px;
+  color: var(--text-secondary);
+  text-align: right;
+  margin-top: 6px;
+}
+.char-count.warn {
+  color: var(--danger);
+}
+
+.submit-error {
+  font-size: 13px;
+  color: var(--danger);
+  margin-top: 10px;
+}
+
+.editor-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.btn-ghost {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  border: 1px solid rgba(23, 209, 232, 0.4);
+  border-radius: 10px;
+  padding: 9px 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+}
+.btn-ghost:hover {
+  background: rgba(23, 209, 232, 0.07);
+}
+
+.btn-primary {
+  font-size: 13px;
+  font-weight: 700;
+  color: #04121c;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.mission-toast {
+  margin-top: 18px;
+  background: rgba(46, 232, 154, 0.1);
+  border: 1px solid rgba(46, 232, 154, 0.35);
+  color: var(--success);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+}
